@@ -1,0 +1,25 @@
+﻿@{
+    ViewBag.Title = "Survey";
+}
+
+<div id="bodyContainer" ng-app="SurveyApp">
+    <section id="content">
+        <div class="container">
+            <div class="row">
+                <div class="flip-container text-center col-md-12" ng-controller="SurveyCtrl" ng-init="nextQuestion()">
+                    <div @*class="back flip"*@ ng-class="{flip: true, front: isFront, back: !isFront }">
+                        <p class="lead">{{title}}</p>
+                        <div class="row text-center">
+                            <button class="btn btn-info option" ng-repeat="option in options" ng-click="sendAnswer(option)">{{option.optionValue}}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section scripts {
+    @Scripts.Render("~/Scripts/angular.js")
+    @Scripts.Render("~/Scripts/app/survey-controller.js")
+}
